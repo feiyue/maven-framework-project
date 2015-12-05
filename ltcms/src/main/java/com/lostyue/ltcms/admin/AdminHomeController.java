@@ -21,6 +21,6 @@ public class AdminHomeController {
 	@RequestMapping("/adminHome")
 	public String showAdminHomePage(Model model){
 		model.addAttribute("adminHome", "ltcms admin home");
-		return "admin/NewFile1";
+		return "admin/bsHome";
 	}
 }

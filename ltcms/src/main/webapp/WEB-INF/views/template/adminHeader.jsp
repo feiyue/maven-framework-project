@@ -3,15 +3,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
 <head>
-<link type="text/css" rel="stylesheet"
-	href='<c:url value="/resources/bootstrap/css/bootstrap.min.css"></c:url>'>
-<link type="text/css" rel="stylesheet"
-	href='<c:url value="/resources/bootstrap/css/bootstrap-theme.min.css"></c:url>'>
-
-<script type="text/javascript"
-	src='<c:url value="/resources/jquery/jquery-1.11.3.min.js"></c:url>'></script>
-<script type="text/javascript"
-	src='<c:url value="/resources/bootstrap/js/bootstrap.min.js"></c:url>'></script>
 </head>
 <body>
 	<nav class="navbar navbar-default">
@@ -25,7 +16,7 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#">Brand</a>
+				<a class="navbar-brand" href="#">LtCms</a>
 			</div>
 
 			<!-- Collect the nav links, forms, and other content for toggling -->

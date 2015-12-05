@@ -14,5 +14,10 @@
 	<definition name="tiles.index.definition" extends="tiles.base.definition" template="/WEB-INF/views/template/index_layout.jsp">
 		<put-attribute name="body" value="/WEB-INF/views/template/index_body.jsp" />
 	</definition>
+	
+	<definition name="tiles.bs.definition" extends="tiles.base.definition" template="/WEB-INF/views/template/bs_layout.jsp">
+		<put-attribute name="body" value="/WEB-INF/views/template/index_body.jsp" />
+		<put-attribute name="menu" value="/WEB-INF/views/template/menu.jsp" />
+	</definition>
 
 </tiles-definitions>

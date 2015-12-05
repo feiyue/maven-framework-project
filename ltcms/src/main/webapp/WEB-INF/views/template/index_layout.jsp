@@ -10,7 +10,7 @@
 <tiles:insertAttribute name="script" />
 </head>
 <body style="width: 100%;">
-	<div id="header">
+	<div id="header" style="width: 100%;">
 		<tiles:insertAttribute name="header" />
 	</div>
 	<div id="body">
