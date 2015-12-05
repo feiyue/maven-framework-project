@@ -9,7 +9,7 @@
 <title><tiles:insertAttribute name="title" /></title>
 <tiles:insertAttribute name="script" />
 </head>
-<body>
+<body style="width: 100%;">
 	<div id="header">
 		<tiles:insertAttribute name="header" />
 	</div>
