@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.lostyue.ltcms.admin;
+package com.lostyue.ltcms.admin.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,7 +18,7 @@ public class AdminHomeController {
 	 * @param model
 	 * @return
 	 */
-	@RequestMapping("/adminHome")
+	@RequestMapping(value = "/admin")
 	public String showAdminHomePage(Model model){
 		model.addAttribute("adminHome", "ltcms admin home");
 		return "admin/bsHome";

@@ -20,7 +20,10 @@
 
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>/WEB-INF/dispatcher-servlet.xml</param-value>
+		<param-value>
+		/WEB-INF/dispatcher-servlet.xml,
+		classpath*:db/db_*.xml,
+		</param-value>
 	</context-param>
 
 	<listener>

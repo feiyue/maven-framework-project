@@ -22,8 +22,10 @@
 		<property name="suffix" value=".jsp" />
 	</bean>
 
-	<mvc:resources location="/WEB-INF/static_resources/css/" mapping="/css/**" />
-	<mvc:resources location="/WEB-INF/static_resources/js/" mapping="/js/**" />
+	<mvc:resources location="/WEB-INF/static_resources/css/"
+		mapping="/css/**" />
+	<mvc:resources location="/WEB-INF/static_resources/js/"
+		mapping="/js/**" />
 
 	<!-- 视图解析器 -->
 	<bean class="org.springframework.web.servlet.view.tiles3.TilesViewResolver" />
