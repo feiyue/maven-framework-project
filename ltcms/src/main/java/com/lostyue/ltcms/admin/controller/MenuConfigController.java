@@ -3,6 +3,7 @@
  */
 package com.lostyue.ltcms.admin.controller;
 
+import java.util.Calendar;
 import java.util.List;
 import java.util.Map;
 
@@ -13,7 +14,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.lostyue.ltcms.admin.dao.LtMenuDao;
+import com.lostyue.ltcms.admin.dao.MenuDao;
+import com.lostyue.ltcms.admin.model.Menu;
+import com.lostyue.ltcms.admin.service.MenuService;
 
 /**
  * @author ra
@@ -23,8 +26,8 @@ import com.lostyue.ltcms.admin.dao.LtMenuDao;
 public class MenuConfigController {
 	
 	@Autowired
-	@Qualifier("ltMenuDao")
-	private LtMenuDao ltMenuDao;
+	@Qualifier("menuService")
+	private MenuService menuService;
 	
 	/**
 	 * 展现菜单配置列表
@@ -33,10 +36,12 @@ public class MenuConfigController {
 	 */
 	@RequestMapping("/list")
 	public String showMenuList(Model model){
-		List menus = ltMenuDao.getMenu();
-		for (Object object : menus) {
-			System.out.println(MapUtils.getString((Map) object, "LT_MENU_NAME"));
-		}
+		Menu m = new Menu();
+		m.setCreate_date(Calendar.getInstance().getTime());
+		m.setLt_menu_code("menu code");
+		m.setLt_menu_name("menu name");
+		menuService.saveMenu(m);
+		
 		return "admin/menu/menuList";
 	}
 }
