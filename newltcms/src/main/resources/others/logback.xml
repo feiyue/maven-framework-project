@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="600 seconds">
+	<!--定义日志文件的存储地址-->
+	<property resource="downloadtmpfile.properties" />
+	
+	<!-- 数据库表输出 -->
+	<!--
+	<appender name="DB" class="ch.qos.logback.classic.db.DBAppender">
+		<connectionSource class="ch.qos.logback.core.db.DriverManagerConnectionSource">
+			<driverClass>oracle.jdbc.driver.OracleDriver</driverClass>
+			<url>jdbc:oracle:thin:@192.168.0.207:1521:hxdi</url>
+			<user>hlmcpm_b_07</user>
+			<password>hlmcpm_b_071</password>
+		</connectionSource>
+		<connectionSource class="ch.qos.logback.core.db.JNDIConnectionSource">
+			<param name="jndiLocation" value="java/oracle" />
+		</connectionSource>
+	</appender>
+	-->
+	
+	<!-- 文件输出 -->
+	<appender name="DATA_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender"> 
+		<file>${uploadPath}log/data.log</file>  
+		<rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+			<!--日志文件输出的文件名-->
+			<FileNamePattern>${uploadPath}log/data.%i.log.zip</FileNamePattern> 
+			<!--日志文件保留个数-->
+			<minIndex>1</minIndex>
+			<maxIndex>5</maxIndex>
+		</rollingPolicy>   
+		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder"> 
+			<!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符--> 
+			<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - {%msg}%n</pattern>   
+		</encoder> 
+		<!--日志文件最大的大小-->
+		<triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+			<MaxFileSize>50MB</MaxFileSize>
+		</triggeringPolicy>
+	</appender>
+	
+	<!-- 控制台输出 -->
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<pattern>%date %logger - %msg%n</pattern>
+		</layout>
+	</appender>
+	
+	<logger name="com.lostyue" additivity="false">
+		<!-- Logger级别：TRACE < DEBUG < INFO < WARN < ERROR -->
+		<!-- INFO、WARN、ERROR级别的log会出现在控制台 -->
+		<level value="debug" />
+		<appender-ref ref="STDOUT" />
+	</logger>
+	<logger name="org.directwebremoting.impl" additivity="false">
+		<!-- WARN、ERROR级别的log会出现在控制台 -->
+		<level value="debug" />
+		<appender-ref ref="STDOUT" />
+	</logger>
+	
+	<root>
+		<level value="error" />
+		<appender-ref ref="STDOUT" />
+	</root>
+</configuration>
