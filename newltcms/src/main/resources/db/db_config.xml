@@ -18,6 +18,7 @@
 	<!-- 配置properties文件位置 -->
 	<context:property-placeholder location="classpath:db/db.properties" />
 	
+	<!-- 整合事务 -->
 	<context:component-scan base-package="com.lostyue.ltcms">
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Service"/>
 	</context:component-scan>
