@@ -19,5 +19,10 @@
 		<put-attribute name="body" value="/WEB-INF/views/template/index_body.jsp" />
 		<put-attribute name="menu" value="/WEB-INF/views/template/menu.jsp" />
 	</definition>
+	
+	<definition name="tiles.admin.menu.edit.definition" extends="tiles.base.definition" template="/WEB-INF/views/template/bs_layout.jsp">
+		<put-attribute name="body" value="/WEB-INF/views/template/admin/menu/menuEdit.jsp" />
+		<put-attribute name="menu" value="/WEB-INF/views/template/menu.jsp" />
+	</definition>
 
 </tiles-definitions>

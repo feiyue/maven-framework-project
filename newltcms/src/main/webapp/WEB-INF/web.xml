@@ -40,5 +40,20 @@
 		<param-name>logbackConfigLocation</param-name>
 		<param-value>classpath:others/logback.xml</param-value>
 	</context-param>
+	
+	<!-- 配置Session -->
+	<filter>
+	    <filter-name>openSession</filter-name>
+	    <filter-class>org.springframework.orm.hibernate4.support.OpenSessionInViewFilter</filter-class>
+	    <!-- 请注意，此处必须定义，否则后面会报错，具体是什么，笔者没截图，记不太清楚了 -->
+	    <init-param>
+	        <param-name>sessionFactoryBeanName</param-name>
+	        <param-value>sessionFactory</param-value>
+	    </init-param>
+	</filter>
+	<filter-mapping>
+	    <filter-name>openSession</filter-name>
+	    <url-pattern>/*</url-pattern>
+	</filter-mapping>
 
 </web-app>
