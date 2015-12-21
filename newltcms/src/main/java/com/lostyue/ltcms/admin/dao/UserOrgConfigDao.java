@@ -3,6 +3,8 @@
  */
 package com.lostyue.ltcms.admin.dao;
 
+import java.util.List;
+
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -36,6 +38,17 @@ public class UserOrgConfigDao {
 	 */
 	public Ltcms_user_ queryUser(String userId){
 		return (Ltcms_user_) sessionFactory.getCurrentSession().get(Ltcms_user_.class, userId);
+	}
+	
+	/**
+	 * 查询用户列表信息
+	 * 2015年12月20日
+	 * @author 许彬
+	 * @Description
+	 */
+	@SuppressWarnings("unchecked")
+	public List<Ltcms_user_> queryUserList(){
+		return sessionFactory.getCurrentSession().createQuery("from Ltcms_user_").list();
 	}
 
 }

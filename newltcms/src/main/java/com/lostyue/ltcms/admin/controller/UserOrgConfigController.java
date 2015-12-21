@@ -3,6 +3,10 @@
  */
 package com.lostyue.ltcms.admin.controller;
 
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,6 +67,13 @@ public class UserOrgConfigController {
 	public String queryUser(@PathVariable String userid, Model model){
 		model.addAttribute(userOrgConfigService.queryUser(userid));
 		return "admin/userorg/userEdit";
+	}
+	
+	@RequestMapping("/userlist")
+	public String queryAllUser(Model model){
+		List<Ltcms_user_> list = userOrgConfigService.queryAllUser(); 
+		model.addAttribute("userlist", list);
+		return "admin/userorg/userList";
 	}
 	
 }

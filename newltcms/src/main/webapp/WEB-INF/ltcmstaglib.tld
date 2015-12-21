@@ -12,4 +12,38 @@
     	<tag-class>com.lostyue.ltcms.admin.tlddef.LtcmsDateTag</tag-class>
     	<body-content>empty</body-content>
     </tag>
+    <tag>
+    	<name>ltMapDataTable</name>
+    	<tag-class>com.lostyue.ltcms.admin.tlddef.LtcmsDataTableTag</tag-class>
+    	<body-content>empty</body-content>
+    	
+    	<attribute>
+    		<name>collection</name>
+    		<required>true</required>
+    		<fragment>true</fragment>
+    	</attribute>
+    	
+    	<attribute>
+    		<name>columns</name>
+    		<required>true</required>
+    		<fragment>true</fragment>
+    	</attribute>
+    </tag>
+    <tag>
+    	<name>ltObjectDataTable</name>
+    	<tag-class>com.lostyue.ltcms.admin.tlddef.LtcmsObjectDataTableTag</tag-class>
+    	<body-content>empty</body-content>
+    	
+    	<attribute>
+    		<name>collection</name>
+    		<required>true</required>
+    		<fragment>true</fragment>
+    	</attribute>
+    	
+    	<attribute>
+    		<name>modelname</name>
+    		<required>true</required>
+    		<fragment>true</fragment>
+    	</attribute>
+    </tag>
 </taglib>

@@ -9,6 +9,8 @@ import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.GenericGenerator;
 
+import com.lostyue.ltcms.admin.annotation.LtColumn;
+
    /**
     * ltcms_user_ 实体类
     * 2015-12-19 09:53 上午 许彬
@@ -23,22 +25,28 @@ public class Ltcms_user_{
 	@GenericGenerator(name = "system-uuid",strategy="uuid") 
 	private String userid;
 	
-	private double companyid;
+	private Double companyid;
 	private Timestamp createdate;
 	private Timestamp modifieddate;
-	private double defaultuser;
-	private double contactid;
+	private Double defaultuser;
+	private Double contactid;
+	
+	@LtColumn(columnHeaderName="用户密码", columnIndex=2)
 	private String password_;
-	private double passwordencrypted;
-	private double passwordreset;
+	
+	private Double passwordencrypted;
+	private Double passwordreset;
 	private Timestamp passwordmodifieddate;
-	private double gracelogincount;
+	private Double gracelogincount;
 	
 	@Size(min=6, max=20, message="Login name must in 6 and 20")
+	@LtColumn(columnHeaderName="登录名称", columnIndex=1)
 	private String screenname;
 	
+	@LtColumn(columnHeaderName="邮箱", columnIndex=3)
 	private String emailaddress;
-	private double portraitid;
+	
+	private Double portraitid;
 	private String languageid;
 	private String timezoneid;
 	private String greeting;
@@ -48,23 +56,23 @@ public class Ltcms_user_{
 	private Timestamp lastlogindate;
 	private String lastloginip;
 	private Timestamp lastfailedlogindate;
-	private double failedloginattempts;
-	private double lockout;
+	private Double failedloginattempts;
+	private Double lockout;
 	private Timestamp lockoutdate;
-	private double agreedtotermsofuse;
-	private double active_;
+	private Double agreedtotermsofuse;
+	private Double active_;
 	private String uuid_;
-	private double seq;
+	private Double seq;
 	public void setUserid(String userid){
 	this.userid=userid;
 	}
 	public String getUserid(){
 		return userid;
 	}
-	public void setCompanyid(double companyid){
+	public void setCompanyid(Double companyid){
 	this.companyid=companyid;
 	}
-	public double getCompanyid(){
+	public Double getCompanyid(){
 		return companyid;
 	}
 	public void setCreatedate(Timestamp createdate){
@@ -79,16 +87,16 @@ public class Ltcms_user_{
 	public Timestamp getModifieddate(){
 		return modifieddate;
 	}
-	public void setDefaultuser(double defaultuser){
+	public void setDefaultuser(Double defaultuser){
 	this.defaultuser=defaultuser;
 	}
-	public double getDefaultuser(){
+	public Double getDefaultuser(){
 		return defaultuser;
 	}
-	public void setContactid(double contactid){
+	public void setContactid(Double contactid){
 	this.contactid=contactid;
 	}
-	public double getContactid(){
+	public Double getContactid(){
 		return contactid;
 	}
 	public void setPassword_(String password_){
@@ -97,16 +105,16 @@ public class Ltcms_user_{
 	public String getPassword_(){
 		return password_;
 	}
-	public void setPasswordencrypted(double passwordencrypted){
+	public void setPasswordencrypted(Double passwordencrypted){
 	this.passwordencrypted=passwordencrypted;
 	}
-	public double getPasswordencrypted(){
+	public Double getPasswordencrypted(){
 		return passwordencrypted;
 	}
-	public void setPasswordreset(double passwordreset){
+	public void setPasswordreset(Double passwordreset){
 	this.passwordreset=passwordreset;
 	}
-	public double getPasswordreset(){
+	public Double getPasswordreset(){
 		return passwordreset;
 	}
 	public void setPasswordmodifieddate(Timestamp passwordmodifieddate){
@@ -115,10 +123,10 @@ public class Ltcms_user_{
 	public Timestamp getPasswordmodifieddate(){
 		return passwordmodifieddate;
 	}
-	public void setGracelogincount(double gracelogincount){
+	public void setGracelogincount(Double gracelogincount){
 	this.gracelogincount=gracelogincount;
 	}
-	public double getGracelogincount(){
+	public Double getGracelogincount(){
 		return gracelogincount;
 	}
 	public void setScreenname(String screenname){
@@ -133,10 +141,10 @@ public class Ltcms_user_{
 	public String getEmailaddress(){
 		return emailaddress;
 	}
-	public void setPortraitid(double portraitid){
+	public void setPortraitid(Double portraitid){
 	this.portraitid=portraitid;
 	}
-	public double getPortraitid(){
+	public Double getPortraitid(){
 		return portraitid;
 	}
 	public void setLanguageid(String languageid){
@@ -193,16 +201,16 @@ public class Ltcms_user_{
 	public Timestamp getLastfailedlogindate(){
 		return lastfailedlogindate;
 	}
-	public void setFailedloginattempts(double failedloginattempts){
+	public void setFailedloginattempts(Double failedloginattempts){
 	this.failedloginattempts=failedloginattempts;
 	}
-	public double getFailedloginattempts(){
+	public Double getFailedloginattempts(){
 		return failedloginattempts;
 	}
-	public void setLockout(double lockout){
+	public void setLockout(Double lockout){
 	this.lockout=lockout;
 	}
-	public double getLockout(){
+	public Double getLockout(){
 		return lockout;
 	}
 	public void setLockoutdate(Timestamp lockoutdate){
@@ -211,16 +219,16 @@ public class Ltcms_user_{
 	public Timestamp getLockoutdate(){
 		return lockoutdate;
 	}
-	public void setAgreedtotermsofuse(double agreedtotermsofuse){
+	public void setAgreedtotermsofuse(Double agreedtotermsofuse){
 	this.agreedtotermsofuse=agreedtotermsofuse;
 	}
-	public double getAgreedtotermsofuse(){
+	public Double getAgreedtotermsofuse(){
 		return agreedtotermsofuse;
 	}
-	public void setActive_(double active_){
+	public void setActive_(Double active_){
 	this.active_=active_;
 	}
-	public double getActive_(){
+	public Double getActive_(){
 		return active_;
 	}
 	public void setUuid_(String uuid_){
@@ -229,10 +237,10 @@ public class Ltcms_user_{
 	public String getUuid_(){
 		return uuid_;
 	}
-	public void setSeq(double seq){
+	public void setSeq(Double seq){
 	this.seq=seq;
 	}
-	public double getSeq(){
+	public Double getSeq(){
 		return seq;
 	}
 }
