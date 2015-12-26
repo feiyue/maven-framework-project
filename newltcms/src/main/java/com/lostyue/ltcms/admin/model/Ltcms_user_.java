@@ -10,6 +10,9 @@ import javax.validation.constraints.Size;
 import org.hibernate.annotations.GenericGenerator;
 
 import com.lostyue.ltcms.admin.annotation.LtColumn;
+import com.lostyue.ltcms.admin.annotation.LtFieldType;
+import com.lostyue.ltcms.admin.annotation.LtForm;
+import com.lostyue.ltcms.admin.annotation.LtFormField;
 
    /**
     * ltcms_user_ 实体类
@@ -18,6 +21,7 @@ import com.lostyue.ltcms.admin.annotation.LtColumn;
 
 @Entity
 @Table(name="LTCMS_USER_")
+@LtForm
 public class Ltcms_user_{
 	
 	@Id
@@ -41,6 +45,7 @@ public class Ltcms_user_{
 	
 	@Size(min=6, max=20, message="Login name must in 6 and 20")
 	@LtColumn(columnHeaderName="登录名称", columnIndex=1)
+	@LtFormField(label="用户名称", fieldType=LtFieldType.TEXT)
 	private String screenname;
 	
 	@LtColumn(columnHeaderName="邮箱", columnIndex=3)
@@ -49,6 +54,7 @@ public class Ltcms_user_{
 	private Double portraitid;
 	private String languageid;
 	private String timezoneid;
+	@LtFormField(label="欢迎词", fieldType=LtFieldType.TEXT)
 	private String greeting;
 	private String comments;
 	private Timestamp logindate;

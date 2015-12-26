@@ -28,7 +28,8 @@ public class UserOrgConfigDao {
 	 * @param user
 	 */
 	public void insertUser(Ltcms_user_ user){
-		sessionFactory.getCurrentSession().save(user);
+		System.out.println(user.getUserid());
+		sessionFactory.getCurrentSession().saveOrUpdate(user);
 	}
 	
 	/**

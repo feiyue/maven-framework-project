@@ -21,13 +21,43 @@ import java.lang.annotation.Target;
 @Documented
 public @interface LtColumn {
 	
+	/**
+	 * 定义表头
+	 * 2015年12月21日
+	 * @author 许彬
+	 * @Description
+	 */
 	String columnHeaderName() default "表头";
 	
+	/**
+	 * 列排序字段
+	 * 2015年12月21日
+	 * @author 许彬
+	 * @Description
+	 */
 	double columnIndex();
 	
+	/**
+	 * 列类型字段
+	 * 2015年12月21日
+	 * @author 许彬
+	 * @Description
+	 */
 	String columnType() default "String";
 	
+	/**
+	 * 是否需要展示排序
+	 * 2015年12月21日
+	 * @author 许彬
+	 * @Description
+	 */
 	boolean needSort() default true;
 	
+	/**
+	 * 隐藏列
+	 * 2015年12月21日
+	 * @author 许彬
+	 * @Description
+	 */
 	boolean isHiddenColumn() default false;
 }

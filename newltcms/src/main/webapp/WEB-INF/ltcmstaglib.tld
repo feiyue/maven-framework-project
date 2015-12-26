@@ -46,4 +46,22 @@
     		<fragment>true</fragment>
     	</attribute>
     </tag>
+    
+    <tag>
+    	<name>ltObjectForm</name>
+    	<tag-class>com.lostyue.ltcms.admin.tlddef.LtcmsFormTag</tag-class>
+    	<body-content>empty</body-content>
+    	
+    	<attribute>
+    		<name>attribute</name>
+    		<required>true</required>
+    		<fragment>true</fragment>
+    	</attribute>
+    	
+    	<attribute>
+    		<name>modelname</name>
+    		<required>true</required>
+    		<fragment>true</fragment>
+    	</attribute>
+    </tag>
 </taglib>

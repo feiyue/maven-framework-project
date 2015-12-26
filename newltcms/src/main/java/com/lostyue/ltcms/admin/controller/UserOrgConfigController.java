@@ -5,8 +5,6 @@ package com.lostyue.ltcms.admin.controller;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +14,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.lostyue.ltcms.admin.model.Ltcms_user_;
 import com.lostyue.ltcms.admin.service.UserOrgConfigService;
@@ -57,6 +56,15 @@ public class UserOrgConfigController {
 		return "redirect:/urconfig/" + user.getUserid();
 	}
 	
+	@RequestMapping("/newuser")
+	public String addbsUser(@Valid Ltcms_user_ user, BindingResult result){
+		if(result.hasErrors()){
+			return "admin/userorg/userEdit";
+		}
+		userOrgConfigService.saveUser(user);
+		return "redirect:/urconfig/" + user.getUserid();
+	}
+	
 	/**
 	 * 根据用户ID查询用户信息
 	 * @param userid
@@ -65,7 +73,8 @@ public class UserOrgConfigController {
 	 */
 	@RequestMapping(method=RequestMethod.GET, value="/{userid}")
 	public String queryUser(@PathVariable String userid, Model model){
-		model.addAttribute(userOrgConfigService.queryUser(userid));
+		Ltcms_user_ user = userOrgConfigService.queryUser(userid);
+		model.addAttribute(user);
 		return "admin/userorg/userEdit";
 	}
 	
@@ -74,6 +83,11 @@ public class UserOrgConfigController {
 		List<Ltcms_user_> list = userOrgConfigService.queryAllUser(); 
 		model.addAttribute("userlist", list);
 		return "admin/userorg/userList";
+	}
+	
+	@RequestMapping("/newformuser")
+	public String addFormUser(Model model){
+		return "admin/userorg/userFormEdit";
 	}
 	
 }
