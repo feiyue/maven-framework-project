@@ -6,6 +6,8 @@ package com.lostyue.ltcms.admin.dao;
 import java.util.List;
 
 import org.hibernate.SessionFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
@@ -19,6 +21,8 @@ import com.lostyue.ltcms.admin.model.Ltcms_user_;
 @Repository("userOrgConfigDao")
 public class UserOrgConfigDao {
 	
+	private static Logger logger = LoggerFactory.getLogger(UserOrgConfigDao.class);
+	
 	@Autowired
 	@Qualifier("sessionFactory")
 	private SessionFactory sessionFactory;
@@ -28,7 +32,7 @@ public class UserOrgConfigDao {
 	 * @param user
 	 */
 	public void insertUser(Ltcms_user_ user){
-		System.out.println(user.getUserid());
+		logger.info(user.getUserid());
 		sessionFactory.getCurrentSession().saveOrUpdate(user);
 	}
 	
