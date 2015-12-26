@@ -48,7 +48,7 @@
 	<logger name="com.lostyue" additivity="false">
 		<!-- Logger级别：TRACE < DEBUG < INFO < WARN < ERROR -->
 		<!-- INFO、WARN、ERROR级别的log会出现在控制台 -->
-		<level value="debug" />
+		<level value="info" />
 		<appender-ref ref="STDOUT" />
 	</logger>
 	<logger name="org.directwebremoting.impl" additivity="false">
