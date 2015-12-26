@@ -53,13 +53,7 @@
     	<body-content>empty</body-content>
     	
     	<attribute>
-    		<name>attribute</name>
-    		<required>true</required>
-    		<fragment>true</fragment>
-    	</attribute>
-    	
-    	<attribute>
-    		<name>modelname</name>
+    		<name>modelAttribute</name>
     		<required>true</required>
     		<fragment>true</fragment>
     	</attribute>
