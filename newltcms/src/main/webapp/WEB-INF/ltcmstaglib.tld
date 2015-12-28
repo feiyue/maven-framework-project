@@ -55,6 +55,12 @@
     	<attribute>
     		<name>modelAttribute</name>
     		<required>true</required>
+    		<rtexprvalue>true</rtexprvalue>
+    	</attribute>
+    	
+    	<attribute>
+    		<name>readOnly</name>
+    		<required>true</required>
     		<fragment>true</fragment>
     	</attribute>
     </tag>

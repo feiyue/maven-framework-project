@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib uri="http://www.lostyue.com/ltcmstaglib"  prefix="lt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <div>
 	<sf:form modelAttribute="ltcms_user_" action="${pageContext.request.contextPath}/urconfig/newuser" >
@@ -13,6 +14,7 @@
 			<label for=password_>用户密码：</label>
 			<sf:input path="password_" id="password_" type="password"  class="form-control"  placeholder="Password"/>
 		</div>
+		<c:out value=""></c:out>
 		<%-- <div class="checkbox">
 			<label>
 				<sf:checkbox path="lockout" id="lockout"  value="1" />是否锁定	

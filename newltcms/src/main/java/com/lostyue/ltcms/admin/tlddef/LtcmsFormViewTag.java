@@ -23,11 +23,11 @@ import com.lostyue.ltcms.admin.common.Constants;
  * @author 许彬
  * @Description 
  */
-public class LtcmsFormTag extends SimpleTagSupport {
+public class LtcmsFormViewTag extends SimpleTagSupport {
 	
-	private static String INPUT_TEXT = "<input id=\"${fieldId}\" name=\"${fieldId}\" type=\"text\" class=\"form-control\"  placeholder=\"${fieldLabel}\" ${Readonly} ${value} />";
+	private static String INPUT_TEXT = "<input id=\"${fieldId}\" name=\"${fieldId}\" type=\"text\" class=\"form-control\"  placeholder=\"${fieldLabel}\" ${Readonly}/>";
 	
-	private static String INPUT_PASSWORD = "<input id=\"${fieldId}\" name=\"${fieldId}\"  type=\"password\" class=\"form-control\"  placeholder=\"${fieldLabel}\" ${Readonly} ${value} />";
+	private static String INPUT_PASSWORD = "<input id=\"${fieldId}\" name=\"${fieldId}\"  type=\"password\" class=\"form-control\"  placeholder=\"${fieldLabel}\" ${Readonly}/>";
 	
 	private static String INPUT_HIDDEN = "<input type=\"hidden\" id=\"${fieldId}\" name=\"${fieldId}\" value=\"${fieldValue}\">";
 	
@@ -42,7 +42,6 @@ public class LtcmsFormTag extends SimpleTagSupport {
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
-		
 		//TODO 控件直接的距离使用栅格来进行控制！！！
 		/**
 		 * 获取实体类上的表单注解
@@ -78,7 +77,7 @@ public class LtcmsFormTag extends SimpleTagSupport {
 					 */
 					switch (column.fieldType()) {
 						case TEXT:
-							columnHtml.append(LtcmsFormTag.INPUT_TEXT.replace("${fieldId}", fieldId).replace("${fieldLabel}", fieldLabel));
+							columnHtml.append(LtcmsFormViewTag.INPUT_TEXT.replace("${fieldId}", fieldId).replace("${fieldLabel}", fieldLabel));
 							break;
 						case PASSWORD:
 							columnHtml.append(INPUT_PASSWORD.replace("${fieldId}", fieldId).replace("${fieldLabel}", fieldLabel));	
@@ -91,18 +90,10 @@ public class LtcmsFormTag extends SimpleTagSupport {
 					 * 处理只读状态
 					 */
 					int index = columnHtml.indexOf("${Readonly}");
-					
 					if("true".equals(getReadOnly())){
 						columnHtml.replace(index, index + 11, "Readonly");
 					}else{
 						columnHtml.replace(index, index + 11, "");
-					}
-					
-					int index1 = columnHtml.indexOf("${value}");
-					if("true".equals(getReadOnly())){
-						columnHtml.replace(index1, index1 + 8, "value=\"" + (String)getJspContext().findAttribute(field.getName()) + "\"" );
-					}else{
-						columnHtml.replace(index1, index1 + 8, "");
 					}
 					
 					formHtml.append(columnHtml);
@@ -110,7 +101,7 @@ public class LtcmsFormTag extends SimpleTagSupport {
 			}
 			formHtml.append("<button type=\"submit\" class=\"btn btn-default\">新增</button>");
 			
-			formHtml.append(INPUT_HIDDEN.replace("${fieldId}", Constants.PARA_MODELNAME).replace("${fieldValue}", getModelAttribute()));
+			formHtml.append(INPUT_HIDDEN.replace("${fieldId}", "_MODELNAME").replace("${fieldValue}", getModelAttribute()));
 			
 			this.parseForm(formHtml, null);
 			

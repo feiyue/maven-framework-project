@@ -28,5 +28,9 @@ public class CommonFormService {
 	public void saveForm(Object object){
 		commonFormDao.saveForm(object);
 	}
+	
+	public Object queryFormObject(String dataid, String modelName){
+		return commonFormDao.queryFormObject(dataid, modelName);
+	}
 
 }

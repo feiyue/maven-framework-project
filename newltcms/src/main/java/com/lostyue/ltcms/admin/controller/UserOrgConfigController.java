@@ -86,6 +86,7 @@ public class UserOrgConfigController {
 	
 	@RequestMapping("/newformuser")
 	public String addFormUser(Model model){
+		model.addAttribute("modelAttribute", "Ltcms_user_");
 		return "admin/userorg/userFormEdit";
 	}
 	
