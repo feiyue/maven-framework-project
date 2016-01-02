@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.lostyue.ltcms.admin.common.Constants;
 import com.lostyue.ltcms.admin.model.Ltcms_user_;
 import com.lostyue.ltcms.admin.service.UserOrgConfigService;
 
@@ -86,7 +87,7 @@ public class UserOrgConfigController {
 	
 	@RequestMapping("/newformuser")
 	public String addFormUser(Model model){
-		model.addAttribute("modelAttribute", "Ltcms_user_");
+		model.addAttribute(Constants.MODEL_ATTRIBUTE, "Ltcms_user_");
 		return "admin/userorg/userFormEdit";
 	}
 	

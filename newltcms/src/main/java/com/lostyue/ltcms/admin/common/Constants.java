@@ -27,7 +27,12 @@ public class Constants {
 	public static final String PARA_MODELNAME = "_MODELNAME";
 
 	/**
-	 * 表单之间用于传递视图对象的字段
+	 * 表单之间用于传递实体对象的字段
 	 */
 	public static final String PARA_FORMOBJECT = "_FORMOBJECT";
+	
+	/**
+	 * 调用公用表单编制页面的时候，传递给表单标签的实体对象的名称
+	 */
+	public static final String MODEL_ATTRIBUTE = "modelAttribute";
 }

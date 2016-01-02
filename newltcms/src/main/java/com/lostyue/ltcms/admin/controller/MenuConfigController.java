@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.lostyue.ltcms.admin.common.Constants;
 import com.lostyue.ltcms.admin.model.LtMenu;
 import com.lostyue.ltcms.admin.service.MenuService;
 
@@ -64,5 +65,17 @@ public class MenuConfigController {
 		model.addAttribute("menuName", m.getMenuName());
 		model.addAttribute("menuCode", m.getMenuCode());
 		return "admin/menu/edit";
+	}
+	
+	/**
+	 * 菜单编辑入口
+	 * 2016年1月2日
+	 * @author 许彬
+	 * @Description
+	 */
+	@RequestMapping("/newformmenu")
+	public String addFormUser(Model model){
+		model.addAttribute(Constants.MODEL_ATTRIBUTE, "Lt_menu");
+		return "admin/common/commonFormEdit";
 	}
 }

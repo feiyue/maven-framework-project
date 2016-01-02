@@ -19,20 +19,15 @@ import org.hibernate.annotations.GenericGenerator;
  * @author ra
  *
  */
-@Entity
-@Table(name="LT_MENU")
 public class LtMenu {
 	
 	@Id
 	@GeneratedValue(generator="system-uuid")  
 	@GenericGenerator(name = "system-uuid",strategy="uuid") 
-	@Column(name="LT_MENU_ID")
 	private String menuId;
 	
-	@Column(name="LT_MENU_NAME")
 	private String menuName;
 	
-	@Column(name="LT_MENU_CODE")
 	private String menuCode;
 	
 	@Temporal(TemporalType.DATE)

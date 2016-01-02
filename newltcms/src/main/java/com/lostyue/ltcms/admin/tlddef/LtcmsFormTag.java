@@ -37,6 +37,7 @@ public class LtcmsFormTag extends SimpleTagSupport {
 	
 	public void doTag() throws IOException, JspException{
 		Class modelClass = null;
+		boolean isReadOnly = "true".equals(getReadOnly());
 		try {
 			modelClass = Class.forName(Constants.MODEL_CLASS_PACKAGE + getModelAttribute());
 		} catch (ClassNotFoundException e) {
@@ -44,6 +45,8 @@ public class LtcmsFormTag extends SimpleTagSupport {
 		}
 		
 		//TODO 控件直接的距离使用栅格来进行控制！！！
+		//TODO 按钮列表，根据action表来查询
+		//TODO 
 		/**
 		 * 获取实体类上的表单注解
 		 */
@@ -92,14 +95,14 @@ public class LtcmsFormTag extends SimpleTagSupport {
 					 */
 					int index = columnHtml.indexOf("${Readonly}");
 					
-					if("true".equals(getReadOnly())){
+					if(isReadOnly){
 						columnHtml.replace(index, index + 11, "Readonly");
 					}else{
 						columnHtml.replace(index, index + 11, "");
 					}
 					
 					int index1 = columnHtml.indexOf("${value}");
-					if("true".equals(getReadOnly())){
+					if(isReadOnly){
 						columnHtml.replace(index1, index1 + 8, "value=\"" + (String)getJspContext().findAttribute(field.getName()) + "\"" );
 					}else{
 						columnHtml.replace(index1, index1 + 8, "");

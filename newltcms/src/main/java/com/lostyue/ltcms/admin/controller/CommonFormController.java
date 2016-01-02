@@ -38,7 +38,7 @@ public class CommonFormController {
 	private CommonFormService commonFormService;
 
 	@RequestMapping("/new")
-	public String addForm(HttpServletRequest request, HttpServletResponse response, RedirectAttributes attr) throws Exception{
+	public String addForm(HttpServletRequest request, HttpServletResponse response) throws Exception{
 		Map formMap = request.getParameterMap();
 		String modelName = request.getParameter(Constants.PARA_MODELNAME);
 		Class modelClass = null;
@@ -68,11 +68,13 @@ public class CommonFormController {
 			request.setAttribute(String.valueOf(e.getKey()), e.getValue());
 		}
 		
-		attr.addAttribute(Constants.PARA_MODELNAME, modelName);
+		request.setAttribute(Constants.MODEL_ATTRIBUTE, modelName);
+		
+		/*attr.addAttribute(Constants.PARA_MODELNAME, modelName);*/
 		/*attr.addAttribute(Constants.PARA_FORMOBJECT, objectMap);*/
 		
 		/*return "admin/userorg/" + modelName.toLowerCase() + Constants.COMMON_FORM_VIEW_SUFFIX;*/
-		return "redirect:/ltcmsform/view";
+		return "admin/common/commonFormView";
 	}
 	
 	@RequestMapping(value="/view", method=RequestMethod.GET)

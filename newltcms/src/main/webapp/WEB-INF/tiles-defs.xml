@@ -20,6 +20,24 @@
 		<put-attribute name="menu" value="/WEB-INF/views/template/menu.jsp" />
 	</definition>
 	
+	<!-- 公用表单标签编制页面 -->
+	<definition name="tiles.admin.common.formedit.definition" extends="tiles.base.definition" template="/WEB-INF/views/template/bs_layout.jsp">
+		<put-attribute name="body" value="/WEB-INF/views/template/admin/common/commonFormEdit.jsp" />
+		<put-attribute name="menu" value="/WEB-INF/views/template/menu.jsp" />
+	</definition>
+	
+	<!-- 公用表单标签查看页面 -->
+	<definition name="tiles.admin.common.formview.definition" extends="tiles.base.definition" template="/WEB-INF/views/template/bs_layout.jsp">
+		<put-attribute name="body" value="/WEB-INF/views/template/admin/common/commonFormView.jsp" />
+		<put-attribute name="menu" value="/WEB-INF/views/template/menu.jsp" />
+	</definition>
+	
+	<!-- adminHome页面 -->
+	<definition name="tiles.admin.adminhome.definition" extends="tiles.base.definition" template="/WEB-INF/views/template/bs_layout.jsp">
+		<put-attribute name="body" value="/WEB-INF/views/template/admin/adminHome.jsp" />
+		<put-attribute name="menu" value="/WEB-INF/views/template/menu.jsp" />
+	</definition>
+	
 	<!-- 菜单编制页面 -->
 	<definition name="tiles.admin.menu.edit.definition" extends="tiles.base.definition" template="/WEB-INF/views/template/bs_layout.jsp">
 		<put-attribute name="body" value="/WEB-INF/views/template/admin/menu/menuEdit.jsp" />
@@ -38,7 +56,7 @@
 		<put-attribute name="menu" value="/WEB-INF/views/template/menu.jsp" />
 	</definition>
 	
-	<!-- 用户表单标签编制页面 -->
+	<!-- 用户表单标签编制页面  -->
 	<definition name="tiles.admin.userorg.user.formview.definition" extends="tiles.base.definition" template="/WEB-INF/views/template/bs_layout.jsp">
 		<put-attribute name="body" value="/WEB-INF/views/template/admin/userorg/userView.jsp" />
 		<put-attribute name="menu" value="/WEB-INF/views/template/menu.jsp" />
