@@ -60,12 +60,13 @@ public class CommonFormController {
 		/*页面不管是redirect还是直接返回，都是要给Jsp页面的。, html有个毛用？？*/
 		
 		Map objectMap = BeanUtils.describe(formObject);
-		attr.addAllAttributes(objectMap);
-		/*Iterator objectIter = objectMap.entrySet().iterator();
+		
+		/*attr.addAllAttributes(objectMap);*/
+		Iterator objectIter = objectMap.entrySet().iterator();
 		while(objectIter.hasNext()){
 			Entry e = (Entry) objectIter.next();
 			request.setAttribute(String.valueOf(e.getKey()), e.getValue());
-		}*/
+		}
 		
 		attr.addAttribute(Constants.PARA_MODELNAME, modelName);
 		/*attr.addAttribute(Constants.PARA_FORMOBJECT, objectMap);*/
