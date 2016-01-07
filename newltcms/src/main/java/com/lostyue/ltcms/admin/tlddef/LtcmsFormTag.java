@@ -7,6 +7,8 @@ package com.lostyue.ltcms.admin.tlddef;
 
 import java.io.IOException;
 import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.jsp.JspException;
@@ -25,7 +27,7 @@ import com.lostyue.ltcms.admin.common.Constants;
  */
 public class LtcmsFormTag extends SimpleTagSupport {
 	
-	private static String INPUT_TEXT = "<input id=\"${fieldId}\" name=\"${fieldId}\" type=\"text\" class=\"form-control\"  placeholder=\"${fieldLabel}\" ${Readonly} ${value} />";
+	private static String INPUT_TEXT = "<div class=\"col-md-4\"><input id=\"${fieldId}\" name=\"${fieldId}\" type=\"text\" class=\"form-control\"  placeholder=\"${fieldLabel}\" ${Readonly} ${value} /></div>";
 	
 	private static String INPUT_PASSWORD = "<input id=\"${fieldId}\" name=\"${fieldId}\"  type=\"password\" class=\"form-control\"  placeholder=\"${fieldLabel}\" ${Readonly} ${value} />";
 	
@@ -36,8 +38,19 @@ public class LtcmsFormTag extends SimpleTagSupport {
 	private String readOnly;
 	
 	public void doTag() throws IOException, JspException{
+		/**
+		 * 实体类
+		 */
 		Class modelClass = null;
+		/**
+		 * 是否只读
+		 */
 		boolean isReadOnly = "true".equals(getReadOnly());
+		/**
+		 * 菜单列表
+		 */
+		List<String> buttonList = this.getDefaultButtonList(isReadOnly);
+		
 		try {
 			modelClass = Class.forName(Constants.MODEL_CLASS_PACKAGE + getModelAttribute());
 		} catch (ClassNotFoundException e) {
@@ -57,6 +70,21 @@ public class LtcmsFormTag extends SimpleTagSupport {
 			 */
 			Field[] fields = modelClass.getDeclaredFields();
 			StringBuffer formHtml = new StringBuffer();
+			StringBuffer buttonHtml = new StringBuffer();
+			
+			/**
+			 * 处理按钮
+			 */
+			for (String buttonStr : buttonList) {
+				buttonHtml.append(buttonStr);
+			}
+			/**
+			 * 按钮组包裹row
+			 */
+			this.parseButtonGroup(buttonHtml);
+			
+			formHtml.append(buttonHtml);
+			
 			for (Field field : fields) {
 				LtFormField column = field.getAnnotation(LtFormField.class);
 				if(column != null){
@@ -71,7 +99,7 @@ public class LtcmsFormTag extends SimpleTagSupport {
 						case CHECKBOX:
 							break;
 						default:
-							columnHtml.append("<label for=\"" + fieldId + "\">");
+							columnHtml.append("<label for=\"" + fieldId + "\" class=\"col-md-2 control-label\">");
 							columnHtml.append(fieldLabel);
 							columnHtml.append("</label>");
 							break;
@@ -111,7 +139,7 @@ public class LtcmsFormTag extends SimpleTagSupport {
 					formHtml.append(columnHtml);
 				}
 			}
-			formHtml.append("<button type=\"submit\" class=\"btn btn-default\">新增</button>");
+			/*formHtml.append("<button type=\"submit\" class=\"btn btn-default\">新增</button>");*/
 			
 			formHtml.append(INPUT_HIDDEN.replace("${fieldId}", Constants.PARA_MODELNAME).replace("${fieldValue}", getModelAttribute()));
 			
@@ -130,7 +158,7 @@ public class LtcmsFormTag extends SimpleTagSupport {
 	private void parseForm(StringBuffer formHtml, Map criterial){
 		PageContext pageContext = (PageContext) this.getJspContext();
 		String path = pageContext.getServletContext().getContextPath();
-		formHtml.insert(0, "<form action=\""+ path + "/ltcmsform/new\" method=\"post\"> ");
+		formHtml.insert(0, "<form action=\""+ path + "/ltcmsform/new\" method=\"post\" class=\"form-horizontal\"> ");
 		formHtml.append("</form>");
 	}
 	
@@ -155,6 +183,43 @@ public class LtcmsFormTag extends SimpleTagSupport {
 	
 	private void parseControl(StringBuffer formHtml, Map criterial, LtFieldType fieldType){
 		
+	}
+	
+	/**
+	 * 处理按钮组
+	 * 2016年1月3日
+	 * @author 许彬
+	 * @Description
+	 */
+	private void parseButtonGroup(StringBuffer rowHtml){
+		rowHtml.insert(0, "<div class=\"btn-group\" role=\"group\" aria-label=\"...\">");
+		rowHtml.append("</div>");
+	}
+	
+	/**
+	 * 获取默认的按钮列表
+	 * 2016年1月3日
+	 * @author 许彬
+	 * @Description
+	 */
+	private List<String> getDefaultButtonList(boolean isReadOnly){
+		List<String> buttonList = new ArrayList<String>();
+		/**
+		 * 查看页面展示的按钮
+		 */
+		if(isReadOnly){
+			buttonList.add("<button type=\"submit\" class=\"btn btn-default\">删除</button>");
+			buttonList.add("<button type=\"submit\" class=\"btn btn-default\">新增下一条</button>");
+			buttonList.add("<button type=\"submit\" class=\"btn btn-default\">返回列表</button>");
+		}else{
+			/**
+			 * 编制页面展示的按钮
+			 */
+			buttonList.add("<button type=\"submit\" class=\"btn btn-default\" name=\"formButtonAction\" value=\"newData\">新增</button>");
+			buttonList.add("<button type=\"submit\" class=\"btn btn-default\" name=\"formButtonAction\" value=\"returnToList\">返回列表</button>");
+		}
+		
+		return buttonList;
 	}
 
 	public String getModelAttribute() {
